@@ -14,7 +14,14 @@ class Vehicle {
         this.numberOfWheels = 0;
         this.fuel = 0;
     }
+    aboutVehicle() {
+        console.log(`Model ${this.model}`);
+        console.log(`Make ${this.make}`);
+        console.log(`Color ${this.color}`);
+        console.log(`This vehicle is made by ${this.year}`);
+    }
 }
+
 //create a subclass called 'Car' that inherits from the 'Vehicle' class 
 class Car extends Vehicle {
     constructor(make, model, year, color, mileage) { //constructor
@@ -51,7 +58,7 @@ start() {
 //method scheduleServices()
 scheduleServices() {
     if (this.mileage > 30000) {            
-        console.log(`Mileage: ${this.mileage} `+ " ,Car need to be serviced");
+        console.log(`Mileage: ${this.mileage} `+ " , Car need to be serviced");
         this.scheduleService = true;
     }
     else{
@@ -60,8 +67,8 @@ scheduleServices() {
     }                     
     }
 
-//method displayDetails()
-displayDetails() {
+//method displayDetailsCar()
+displayDetailsCar() {
         console.log(`Make: ${this.make}`);
         console.log(`Model: ${this.model}`);
         console.log(`Year: ${this.year}`);
@@ -74,28 +81,86 @@ displayDetails() {
       }
 }
 
-//creating a new objects/Instances 
+//creating a new car objects/Instances 
 
 //object 1
-const myCar = new Car("Mercury", "Sedan", "2021", "red", "40000");
+const myCar = new Car("Mercury", "Sedan", "2021", "red", 40000);
 myCar.start();
 myCar.loadPassenger(7);
 myCar.scheduleServices();
-console.log("Car Details:");
-myCar.displayDetails();
+console.log("\n");
+console.log(".............");
+console.log("Car 1 Details:");
+console.log(".............");
+myCar.displayDetailsCar();
 console.log("----------------------------------------------------");
 
 //object 2
-const myCar1 = new Car("Honda", "Accord", "2022", "Black", "25000");
+const myCar1 = new Car("Honda", "Accord", "2022", "Black", 25000);
 myCar1.start();
 myCar1.loadPassenger(4);
 myCar1.scheduleServices();
-console.log("Car Details:");
-myCar1.displayDetails();
+console.log("\n");
+console.log(".............");
+console.log("Car 2 Details:");
+console.log(".............");
+myCar1.displayDetailsCar();
+console.log("----------------------------------------------------");
 
+//create a subclass called 'Truck' that inherits from the 'Vehicle' class 
+class Truck extends Vehicle {
+    constructor(make, model, year, color, mileage,type,trailerSize,doors,wheels) {//constructor
+    super(make, model, year, color, mileage);//call the parent class constructor
+    this.doors = doors;
+    this.trailerSize= trailerSize;
+    this.type=type;
+    this.wheels=wheels;
+    }
 
+//method loadCapacity()
+loadCapacity()
+{
+if (this.trailerSize == 53) {
+        console.log(`${this.trailerSize}` + " foot trailer can load 30 pallets");
+    }
+if(this.trailerSize == 48) {
+    console.log(`${this.trailerSize}` + " foot trailer can load 24 pallets");
+}
+if(this.trailerSize == 45) {
+    console.log(`${this.trailerSize}` + " foot cubic container can load 24-26 pallets");
+}
+if(this.trailerSize == 40) {
+    console.log(`${this.trailerSize}` + " foot container can load 20 pallets");
+}
+if(this.trailerSize == 24) {
+    console.log(`${this.trailerSize}` + " foot truck can load 12 pallets");
+}
+if(this.trailerSize ==16) {
+    console.log(`${this.trailerSize}` + " foot box truck can load 6 pallets");
+}
+}
 
+//method displayDetailsTruck()
+displayDetailsTruck() {
+    console.log(`Make: ${this.make}`);
+    console.log(`Model: ${this.model}`);
+    console.log(`Year: ${this.year}`);
+    console.log(`Color: ${this.color}`);
+    console.log(`Mileage: ${this.mileage}`);
+    console.log(`Type: ${this.type}`);
+    console.log(`Trailer Size: ${this.trailerSize}`);
+    console.log(`No of doors: ${this.doors}`);
+    console.log(`No of wheels: ${this.wheels}`);
+  }
+}
+//creating a new truck objects/Instances 
 
-
-
-
+//object 1
+const truck1 = new Truck("Kenworth", "TJ6500", "2020", "white", "18000","Jumbo",45,2,18);
+truck1.loadCapacity();
+console.log("\n");
+console.log("...............");
+console.log("Truck Details:");
+console.log("...............");
+truck1.displayDetailsTruck();
+console.log("----------------------------------------------------");
